@@ -35,8 +35,7 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile files('libs/ipay88_androidv7.jar')
-   
+    compile (name:'ipay88_androidv1677',ext:'aar')
 }
 
 allprojects {

@@ -15,14 +15,15 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.ipay.Ipay;
-import com.ipay.IpayPayment;
-import com.ipay.IpayResultDelegate;
+import com.ipay.IpayIH;
+import com.ipay.IpayIHPayment;
+import com.ipay.IpayIHResultDelegate;
 
 import java.io.Serializable;
 
 /**
  * Created by yussuf on 2/28/18.
+ * Updated 03/10/20
  */
 
 public class IPay88Module extends ReactContextBaseJavaModule {
@@ -42,7 +43,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         context = getReactApplicationContext();
 
         // Precreate payment
-        IpayPayment payment = new IpayPayment();
+        IpayPayment payment = new IpayIHPayment();
         payment.setMerchantKey (data.getString("merchantKey"));
         payment.setMerchantCode (data.getString("merchantCode"));
         payment.setPaymentId (data.getString("paymentId"));
@@ -58,12 +59,12 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         payment.setCountry (data.getString("country"));
         payment.setBackendPostURL (data.getString("backendUrl"));
 
-        Intent checkoutIntent = Ipay.getInstance().checkout(payment, getReactApplicationContext(), new ResultDelegate());
+        Intent checkoutIntent = IpayIH.getInstance().checkout(payment, getReactApplicationContext(), new ResultDelegate());
         checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(checkoutIntent);
     }
 
-    static public class ResultDelegate implements IpayResultDelegate, Serializable {
+    static public class ResultDelegate implements IpayIHResultDelegate, Serializable {
         public void onPaymentSucceeded (String transId, String refNo, String amount, String remarks, String authCode)
         {
             WritableMap params = Arguments.createMap();
