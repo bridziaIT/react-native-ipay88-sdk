@@ -35,7 +35,7 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile (name:'ipay88_androidv1677',ext:'aar')
+    compile files('libs/ipayhostedstandardSDK.jar')
 }
 
 allprojects {

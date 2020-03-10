@@ -1,10 +1,9 @@
 package com.ipay88;
 
-
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.NativeModule;
@@ -15,9 +14,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.ipay.IpayIH;
-import com.ipay.IpayIHPayment;
-import com.ipay.IpayIHResultDelegate;
+import com.ipay.IPayIH;
+import com.ipay.IPayIHPayment;
+import com.ipay.IPayIHResultDelegate;
 
 import java.io.Serializable;
 
@@ -43,7 +42,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         context = getReactApplicationContext();
 
         // Precreate payment
-        IpayPayment payment = new IpayIHPayment();
+        IPayIHPayment payment = new IPayIHPayment();
         payment.setMerchantKey (data.getString("merchantKey"));
         payment.setMerchantCode (data.getString("merchantCode"));
         payment.setPaymentId (data.getString("paymentId"));
@@ -59,12 +58,13 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         payment.setCountry (data.getString("country"));
         payment.setBackendPostURL (data.getString("backendUrl"));
 
-        Intent checkoutIntent = IpayIH.getInstance().checkout(payment, getReactApplicationContext(), new ResultDelegate());
-        checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(checkoutIntent);
+        Intent checkoutIntent = IPayIH.getInstance().checkout(payment, 
+            context, new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
+        //checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivityForResult(checkoutIntent, 1);
     }
 
-    static public class ResultDelegate implements IpayIHResultDelegate, Serializable {
+    static public class ResultDelegate implements IPayIHResultDelegate, Serializable {
         public void onPaymentSucceeded (String transId, String refNo, String amount, String remarks, String authCode)
         {
             WritableMap params = Arguments.createMap();
@@ -99,6 +99,12 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         }
 
         public void onRequeryResult (String merchantCode, String refNo, String amount, String result)
+        {
+            // No need to implement
+        }
+
+        public void onConnectionError (String merchantCode, String refNo, String amount, String result, String errDesc,
+            String ab, String cd)
         {
             // No need to implement
         }
