@@ -58,10 +58,14 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         payment.setCountry (data.getString("country"));
         payment.setBackendPostURL (data.getString("backendUrl"));
 
-        Intent checkoutIntent = IPayIH.getInstance().checkout(payment, 
-            context, new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
-        //checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivityForResult(checkoutIntent, 1);
+//         Intent checkoutIntent = IPayIH.getInstance().checkout(payment, 
+//             context, new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
+//         //checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//         context.startActivityForResult(checkoutIntent, 1);
+        
+        Intent checkoutIntent = IPayIH.getInstance().checkout(payment, getReactApplicationContext(), new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
+        checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(checkoutIntent);
     }
 
     static public class ResultDelegate implements IPayIHResultDelegate, Serializable {
