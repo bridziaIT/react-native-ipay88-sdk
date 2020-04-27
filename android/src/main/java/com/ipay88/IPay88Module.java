@@ -64,7 +64,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
 //         context.startActivityForResult(checkoutIntent, 1);
         
         Intent checkoutIntent = IPayIH.getInstance().checkout(payment, getReactApplicationContext(), new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
-        //checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(checkoutIntent);
     }
 
