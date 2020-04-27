@@ -18,8 +18,8 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 22
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -35,7 +35,9 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile files('libs/ipayhostedstandardSDK.jar')
+    //compile files('libs/ipayhostedstandardSDK.jar')
+    //compile(name: 'ipay88-sdk', ext: 'aar')
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
 }
 
 allprojects {
@@ -51,6 +53,7 @@ allprojects {
         }
     }
 }
+
 
  subprojects {
         afterEvaluate {
