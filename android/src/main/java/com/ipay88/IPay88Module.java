@@ -19,6 +19,7 @@ import com.ipay.IPayIHPayment;
 import com.ipay.IPayIHResultDelegate;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by yussuf on 2/28/18.
@@ -38,12 +39,12 @@ public class IPay88Module extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void pay(ReadableMap data) {
+    public void pay(ReadableMap data) throws UnsupportedEncodingException {
         context = getReactApplicationContext();
 
         // Precreate payment
         IPayIHPayment payment = new IPayIHPayment();
-        payment.setMerchantKey (data.getString("merchantKey"));
+//        payment.setMerchantKey (data.getString("merchantKey"));
         payment.setMerchantCode (data.getString("merchantCode"));
         payment.setPaymentId (data.getString("paymentId"));
         payment.setCurrency (data.getString("currency"));
@@ -52,7 +53,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         payment.setProdDesc (data.getString("productDescription"));
         payment.setUserName (data.getString("userName"));
         payment.setUserEmail (data.getString("userEmail"));
-        payment.setUserContact (data.getString("userContact"));
+//        payment.setUserContact (data.getString("userContact"));
         payment.setRemark (data.getString("remark"));
         payment.setLang (data.getString("utfLang"));
         payment.setCountry (data.getString("country"));
@@ -107,8 +108,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
             // No need to implement
         }
 
-        public void onConnectionError (String merchantCode, String refNo, String amount, String result, String errDesc,
-            String ab, String cd)
+        public void onConnectionError (String s, String s1, String s2, String s3, String s4, String s5)
         {
             // No need to implement
         }
