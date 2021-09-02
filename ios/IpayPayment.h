@@ -2,6 +2,7 @@
 //  IpayPayment.h
 //  ipay88sdk
 //
+#import <Foundation/Foundation.h>
 
 @interface IpayPayment : NSObject {
     NSString *merchantKey;
@@ -18,6 +19,7 @@
     NSString *lang;
     NSString *country;
     NSString *backendPostURL;
+    NSString *appdeeplink;
 }
 
 @property (nonatomic, retain) NSString *merchantKey;
@@ -34,5 +36,6 @@
 @property (nonatomic, retain) NSString *lang;
 @property (nonatomic, retain) NSString *country;
 @property (nonatomic, retain) NSString *backendPostURL;
+@property (nonatomic, retain) NSString *appdeeplink;
 
 @end
