@@ -108,7 +108,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
             // No need to implement
         }
 
-        public void onConnectionError (String s, String s1, String s2, String s3, String s4, String s5, String s6)
+        public void onConnectionError (String s, String s1, String s2, String s3, String s4, String s5)
         {
             // No need to implement
         }
