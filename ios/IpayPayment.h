@@ -5,7 +5,6 @@
 #import <Foundation/Foundation.h>
 
 @interface IpayPayment : NSObject {
-    NSString *merchantKey;
     NSString *merchantCode;
     NSString *paymentId;
     NSString *refNo;
@@ -14,7 +13,6 @@
     NSString *prodDesc;
     NSString *userName;
     NSString *userEmail;
-    NSString *userContact;
     NSString *remark;
     NSString *lang;
     NSString *country;
@@ -22,7 +20,6 @@
     NSString *appdeeplink;
 }
 
-@property (nonatomic, retain) NSString *merchantKey;
 @property (nonatomic, retain) NSString *merchantCode;
 @property (nonatomic, retain) NSString *paymentId;
 @property (nonatomic, retain) NSString *refNo;
@@ -31,7 +28,6 @@
 @property (nonatomic, retain) NSString *prodDesc;
 @property (nonatomic, retain) NSString *userName;
 @property (nonatomic, retain) NSString *userEmail;
-@property (nonatomic, retain) NSString *userContact;
 @property (nonatomic, retain) NSString *remark;
 @property (nonatomic, retain) NSString *lang;
 @property (nonatomic, retain) NSString *country;

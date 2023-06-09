@@ -23,7 +23,7 @@
 - (void)requeryFailed:(NSString *)refNo withMerchantCode:(NSString *)merchantCode withAmount:(NSString *)amount withErrDesc:(NSString *)errDesc;
 @end
 
-@interface Ipay : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate, UIScrollViewDelegate,WKNavigationDelegate,WKUIDelegate,UIApplicationDelegate> {
+@interface Ipay : UIViewController <NSURLConnectionDelegate, UIScrollViewDelegate,WKNavigationDelegate,WKUIDelegate,UIApplicationDelegate> {
     __weak id <PaymentResultDelegate> delegate;
 }
 @property (nonatomic,weak) id <PaymentResultDelegate> delegate;
@@ -31,5 +31,9 @@
 - (UIView *)checkout:(IpayPayment *)payment;
 
 - (void)requery:(IpayPayment *)payment;
+
+- (void)handleLinkFromCustomSchemeURL:(NSURL*)url;
+
++ (id)sharedManager;
 
 @end
