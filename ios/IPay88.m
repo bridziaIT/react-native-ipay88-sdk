@@ -35,7 +35,7 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)data)
     self.paymentsdk = [[Ipay alloc] init];
     self.payment = [[IpayPayment alloc] init];
     [self.payment setPaymentId:data[@"paymentId"]];
-    [self.payment setMerchantKey:data[@"merchantKey"]];
+    // [self.payment setMerchantKey:data[@"merchantKey"]];
     [self.payment setMerchantCode:data[@"merchantCode"]];
     [self.payment setRefNo:data[@"referenceNo"]];
     [self.payment setAmount:data[@"amount"]];
@@ -43,11 +43,12 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)data)
     [self.payment setProdDesc:data[@"productDescription"]];
     [self.payment setUserName:data[@"userName"]];
     [self.payment setUserEmail:data[@"userEmail"]];
-    [self.payment setUserContact:data[@"userContact"]];
+    // [self.payment setUserContact:data[@"userContact"]];
     [self.payment setRemark:data[@"remark"]];
     [self.payment setLang:data[@"utfLang"]];
     [self.payment setCountry:data[@"country"]];
     [self.payment setBackendPostURL:data[@"backendUrl"]];
+    [self.payment setappdeeplink:data[@"appdeeplink"]];
     
     self.paymentsdk.delegate = self;
     self.paymentView = [self.paymentsdk checkout:self.payment];

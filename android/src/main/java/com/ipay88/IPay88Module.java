@@ -58,6 +58,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         payment.setLang (data.getString("utfLang"));
         payment.setCountry (data.getString("country"));
         payment.setBackendPostURL (data.getString("backendUrl"));
+        payment.setAppdeeplink(data.getString("appdeeplink"));
 
 //         Intent checkoutIntent = IPayIH.getInstance().checkout(payment, 
 //             context, new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
