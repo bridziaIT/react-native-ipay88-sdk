@@ -48,7 +48,7 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)data)
         [self.payment setLang:data[@"utfLang"]];
         [self.payment setCountry:data[@"country"]];
         [self.payment setBackendPostURL:data[@"backendUrl"]];
-        [self.payment setappdeeplink:data[@"appdeeplink"]];
+        [self.payment setAppdeeplink:data[@"appdeeplink"]];
         
         self.paymentsdk.delegate = self;
         self.paymentView = [self.paymentsdk checkout:self.payment];
