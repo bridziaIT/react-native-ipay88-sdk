@@ -81,7 +81,8 @@ const Pay = data => {
     // remark = '', // optional
     // utfLang = '', // optional
     country = "",
-    backendUrl = ""
+    backendUrl = "",
+    appdeeplink = "",
   } = data;
 
   const errors = {};
@@ -100,6 +101,7 @@ const Pay = data => {
   // if (utfLang === '') errors.utfLang = '`utfLang` is required'; // optional
   if (country === "") errors.country = "`country` is required";
   if (backendUrl === "") errors.backendUrl = "`backendUrl` is required";
+  if (appdeeplink === "") errors.appdeeplink = "`appdeeplink` is required";
 
   if (Object.keys(errors).length > 0) {
     return errors;
